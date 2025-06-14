@@ -15,6 +15,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -93,21 +94,20 @@ public class SecurityConfig {
     // Define como o Spring Security carrega os detalhes do usuário (ex: do banco de dados)
     @Bean
     public UserDetailsService userDetailsService() {
-        return username -> {
-            // Tenta encontrar o usuário como Employer
-            Optional<Employer> employerOptional = employerRepository.findByEmail(username);
-            if (employerOptional.isPresent()) {
-                return employerOptional.get(); // Retorna Employer (que implementa UserDetails via AbstractUser)
-            }
+        return identifier -> { // Renomeado para 'identifier' para maior clareza
+            // Tenta encontrar o usuário em EmployerRepository
+            return employerRepository.findByEmail(identifier)
+                    .map(user -> (UserDetails) user) // Mapeia para UserDetails
+                    .or(() -> employerRepository.findById(identifier).map(user -> (UserDetails) user)) // Tenta por CPF
+                    .or(() -> employerRepository.findByUsername(identifier).map(user -> (UserDetails) user)) // Tenta por Username
 
-            // Se não for Employer, tenta encontrar como Freelancer
-            Optional<Freelancer> freelancerOptional = freelancerRepository.findByEmail(username);
-            if (freelancerOptional.isPresent()) {
-                return freelancerOptional.get(); // Retorna Freelancer (que implementa UserDetails via AbstractUser)
-            }
+                    // Se não for encontrado em EmployerRepository, tenta em FreelancerRepository
+                    .or(() -> freelancerRepository.findByEmail(identifier).map(user -> (UserDetails) user)) // Tenta por email
+                    .or(() -> freelancerRepository.findById(identifier).map(user -> (UserDetails) user)) // Tenta por CPF
+                    .or(() -> freelancerRepository.findByUsername(identifier).map(user -> (UserDetails) user)) // Tenta por Username
 
-            // Se não encontrar o usuário em nenhum dos repositórios
-            throw new UsernameNotFoundException("Usuário não encontrado: " + username);
+                    // Se não encontrar em nenhum lugar, lança a exceção
+                    .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado: " + identifier));
         };
     }
 

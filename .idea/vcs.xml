@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/fastAPI-MarkCollabIA" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/markcollab-backend" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/markcollab-frontend" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/markcollab-frontend/node_modules/markcollab" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/markcollab-frontend_ANTIGO" vcs="Git" />
+  </component>
+</project>
