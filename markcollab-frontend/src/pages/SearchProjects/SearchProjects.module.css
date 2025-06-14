@@ -1,0 +1,68 @@
+.pageWrapper { background-color: #f8f9fa; min-height: 100vh; }
+.container { max-width: 900px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+.loadingState, .emptyState { /* Estilos compartilhados */
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: #fff;
+  border-radius: 16px;
+}
+.emptyStateIcon { font-size: 3rem; color: #dc3545; margin-bottom: 1rem; }
+.emptyState h3 { font-size: 1.5rem; color: #2d3748; margin: 0 0 0.5rem 0; }
+.emptyState p { color: #718096; margin: 0; }
+
+.header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+.subtitle {
+  color: #718096;
+  font-size: 1.1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.searchBar {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto 3rem auto;
+}
+.searchIcon {
+  position: absolute;
+  top: 50%;
+  left: 1.25rem;
+  transform: translateY(-50%);
+  color: #adb5bd;
+}
+.searchInput {
+  width: 100%;
+  height: 3.5rem;
+  border: 1px solid #dee2e6;
+  border-radius: 50px; /* Pill shape */
+  padding: 0 1.25rem 0 3.5rem; /* Padding para o ícone */
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.searchInput:focus {
+  outline: none;
+  border-color: #8ab4f8;
+  box-shadow: 0 0 0 4px rgba(44, 101, 246, 0.15);
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.paginationWrapper {
+  display: flex;
+  justify-content: center;
+  margin: 3rem 0;
+}

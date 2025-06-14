@@ -1,0 +1,23 @@
+.successBox {
+  text-align: center;
+  padding: 2rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 2rem auto;
+}
+.successBox h2 {
+  color: #256029;
+  margin-bottom: 1rem;
+}
+.successBox p {
+  font-size: 1rem;
+}
+.loginLink {
+  color: #007aff;
+  text-decoration: none;
+  font-weight: 500;
+}
+.loginLink:hover {
+  text-decoration: underline;
+}

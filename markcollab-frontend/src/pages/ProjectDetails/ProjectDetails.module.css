@@ -1,0 +1,198 @@
+.detailsPage {
+  background-color: #f8f9fa;
+  padding: 2.5rem 1.5rem;
+  min-height: 100vh;
+}
+.detailsContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 20px;
+  padding: 2.5rem 3rem;
+  border: 1px solid #e9ecef;
+}
+
+.btnBack {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: #718096;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  transition: color 0.2s;
+}
+.btnBack:hover {
+  color: #2d3748;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e9ecef;
+}
+.title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.keyInfoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  padding: 1.5rem 0;
+  margin-bottom: 1.5rem;
+}
+.keyInfoItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.keyInfoLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: #a0aec0;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.keyInfoValue {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #4a5568;
+  overflow-wrap: break-word; 
+  word-wrap: break-word; 
+}
+.section {
+  margin-bottom: 2rem;
+}
+.sectionTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 0.75rem;
+}
+.section p {
+  color: #718096;
+  line-height: 1.7;
+  font-size: 1rem;
+  margin: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word; 
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2.5rem;
+}
+.btn {
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid transparent;
+}
+.primary {
+  background: #2C65F6;
+  color: #fff;
+  border-color: #2C65F6;
+}
+.primary:hover {
+  background: #1E4BBE;
+}
+.outlined {
+  background: transparent;
+  border: 1px solid #dee2e6;
+  color: #4a5568;
+}
+.outlined:hover {
+  border-color: #2C65F6;
+  color: #2C65F6;
+}
+
+/* Estilo da Seção de Entrega */
+.deliverySection {
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 2.5rem;
+  border: 1px solid #e9ecef;
+}
+.attachmentList {
+  list-style: none;
+  padding: 0;
+  margin-top: 0.5rem;
+}
+.attachmentList li a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: #2C65F6;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+.attachmentList li a:hover {
+  background-color: #e9ecef;
+}
+.deliveryActions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  border-top: 1px solid #e9ecef;
+  padding-top: 1.5rem;
+}
+.btnApprove { background-color: #198754; color: #fff; }
+.btnApprove:hover { background-color: #157347; }
+.btnReject { background-color: #dc3545; color: #fff; }
+.btnReject:hover { background-color: #bb2d3b; }
+
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.statusBadge::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+.statusBadge[data-status="aberto"] { background-color: #2C65F6; color: #fff; }
+.statusBadge[data-status="emandamento"] { background-color: #ffc107; color: #1a202c; }
+.statusBadge[data-status="emrevisão"] { background-color: #fd7e14; color: #fff; }
+.statusBadge[data-status="concluído"] { background-color: #198754; color: #fff; }
+.statusBadge[data-status="cancelado"] { background-color: #6c757d; color: #fff; }
+/* FIM DA CORREÇÃO */
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .detailsPage { padding: 1.5rem 1rem; }
+  .detailsContainer { padding: 2rem 1.5rem; }
+  .header { flex-direction: column; align-items: flex-start; }
+  .title { font-size: 1.75rem; }
+  .statusBadge { margin-top: 1rem; }
+}

@@ -1,0 +1,54 @@
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+label {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #111827;
+}
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  background-color: #fff;
+  padding: 0 0.5rem;
+  transition: border-color 0.2s;
+}
+.inputWrapper:focus-within {
+  border-color: #629bff;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+.inputWrapper input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0.9rem 0;
+  font-size: 0.95rem;
+  color: #111827;
+}
+.inputWrapper input::placeholder {
+  color: #9ca3af;
+}
+.inputError {
+  border-color: #ef4444 !important;
+}
+.iconBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.25rem;
+}
+.error {
+  color: #ef4444;
+  font-size: 0.8rem;
+  margin-top: -0.2rem;
+}

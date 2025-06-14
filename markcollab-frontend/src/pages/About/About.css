@@ -1,0 +1,184 @@
+.sobre_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sobre_div1{
+  display: flex;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.sobre_subDiv1{
+  padding-right: 3rem;
+}
+
+#markcollab{
+  color:#2C65F6;
+  font-size: 50px;
+}
+
+#justlogo{
+  width: 200px;
+}
+
+.sobre_div2{
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  background-color: #2C65F6;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.sobre_div2 h2{
+  text-align: center;
+}
+
+.rowadjust {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4rem;
+}
+
+.sobre_subdiv2 p{
+  margin: 0;
+  text-align: justify;
+  word-spacing: 5px;
+  padding-top: 1rem;
+  color: white;
+}
+  
+#meeting{
+  width: 500px;
+  padding-top: 3.5rem;
+}
+
+.sobre_subdiv2{
+ margin-left: 40px;
+}
+
+.sobre_h2{
+  color: white;
+  font-size: 50px;
+  padding-top: 3rem;
+}
+
+.sobre_div3{
+  display: flex;
+  padding-right: 4rem;
+  padding-left: 4rem;
+  text-align: center;
+  align-items: center;
+  height: 200px;
+  margin: 100px;
+  border-bottom: 0.001mm solid black;
+}
+
+#maos{
+  width: 500px;
+}
+
+.sobre_subdiv3{
+ margin-left: 40px;
+}
+
+.sobre_div4{
+ text-align: center;
+  margin-bottom: 80px;
+}
+
+#vamosConversar{
+  color: #2C65F6;
+  font-size: 45px;
+}
+
+#sobre_btn{
+  margin-top: 30px;
+  width: 200px;
+  height: 50px;
+  border-radius: 50px;
+  color: white;
+  background-color: #2C65F6;
+  border-style: none;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+#sobre_btn:hover{
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+@media (max-width:1025px){
+  .sobre_div2{
+      flex-direction: column;
+      margin-top: 30px;
+  }
+
+  #meeting{
+      width: 500px;
+      margin-left: 70px;
+  }
+  
+  .sobre_subdiv2{
+     margin: auto;
+  }
+
+  .sobre_div3{
+      flex-direction: column;
+      border-style: none;
+  }
+
+  #maos{
+      margin-left: 80px;
+  }
+
+  .sobre_div4{
+      margin-top: 80px;
+  }
+}
+
+@media (max-width: 501px){
+  #justlogo{
+      display: none;
+  }
+
+  .sobre_div2{
+      margin-top: 30px;
+  }
+
+  #meeting{
+      width: 300px;
+      margin-left: 0px;
+  }
+
+  .sobre_subDiv1{
+      margin: auto;
+  }
+
+  #maos{
+      width: 300px;
+      margin: auto;
+  }
+
+  .sobre_div4{
+      margin-top: 80px;
+  }
+
+  .sobre_h2{
+      font-size: 35px;
+  }
+
+  .sobre_subdiv3{
+      margin: auto;
+  }
+
+  #vamosConversar{
+      font-size: 35px;
+  }
+   
+}

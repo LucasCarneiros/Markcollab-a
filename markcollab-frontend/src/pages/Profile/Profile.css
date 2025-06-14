@@ -1,0 +1,133 @@
+.personal-data-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.profile-header h2 {
+  width: 100%;
+  text-align: center;
+  color: #0066ff;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-picture img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #0066ff;
+}
+
+.profile-name h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.profile_form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile_label {
+  font-weight: 500;
+  color: #333;
+}
+
+.profile_input{
+  padding: 12px 15px;
+  border: 1px solid #CCCCCC;
+  border-radius: 10px;
+  font-size: 14px;
+  background-color: #ffffff;
+  color: #555555;
+}
+
+
+.profile_input:disabled {
+  background-color: #efefef;
+  color: #2f2f2f;
+  cursor: not-allowed;
+}
+
+.editProfile-button {
+  background-color: white;
+  color: #0066ff;
+  border: 1px solid #0066ff;
+  padding: 8px 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.editProfile-button:hover {
+  background-color: #0066ff;
+  color: white;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.upload-input {
+  margin-top: 8px;
+}
+
+.btnPhoto{
+  background-color: white;
+  color: #0066ff;
+  border: 1px solid #0066ff;
+  padding: 8px 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.btnPhoto:hover{
+   background-color: #0066ff;
+  color: white;
+}
+
+.aboutbtn{
+  width: 500px; 
+}
+
+.aboutInput{
+  padding: 12px 15px;
+  border: 1px solid #CCCCCC;
+  border-radius: 10px;
+  font-size: 14px;
+  background-color: #ffffff;
+  color: #555;
+  height: 200px;
+}
+
+.aboutInput:disabled{
+  background-color: #f2f2f2;
+}

@@ -1,0 +1,17 @@
+.backButton {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: transparent;
+  border: none;
+  color: var(--white);      /* branco */
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.backButton:hover {
+  opacity: 0.8;
+}

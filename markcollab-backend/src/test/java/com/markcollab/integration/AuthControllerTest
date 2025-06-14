@@ -1,0 +1,159 @@
+package com.markcollab.integration;
+
+import com.github.javafaker.Faker;
+import com.markcollab.controller.AuthController;
+import com.markcollab.payload.AuthRegisterRequest;
+import com.markcollab.payload.MessageResponse; // Importe este
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.ActiveProfiles;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@SpringBootTest
+@ActiveProfiles("test")
+public class AuthIntegrationTest {
+
+    @Autowired
+    private AuthController authController; // Injete o Controller, não o Service diretamente para testes de integração
+
+    private Faker faker;
+
+    @BeforeEach
+    public void setUp() {
+        faker = new Faker();
+    }
+
+    private AuthRegisterRequest generateEmployerData() {
+        return AuthRegisterRequest.builder()
+                .cpf(faker.number().digits(11))
+                .name(faker.name().fullName())
+                .username(faker.name().username())
+                .email(faker.internet().emailAddress())
+                .password("Valid1234")
+                .role("EMPLOYER")
+                .companyName(faker.company().name())
+                .aboutMe(faker.lorem().sentence())
+                .experience(faker.lorem().sentence()) // Verifique se todos os campos estão presentes e preenchidos
+                .build();
+    }
+
+    private AuthRegisterRequest generateFreelancerData() {
+        return AuthRegisterRequest.builder()
+                .cpf(faker.number().digits(11))
+                .name(faker.name().fullName())
+                .username(faker.name().username())
+                .email(faker.internet().emailAddress())
+                .password("Valid1234")
+                .role("FREELANCER")
+                .portfolioLink(faker.internet().url())
+                .aboutMe(faker.lorem().sentence())
+                .experience(faker.lorem().sentence()) // Verifique se todos os campos estão presentes e preenchidos
+                .build();
+    }
+
+    @Test
+    public void shouldRegisterEmployerSuccessfully_whenAllFieldsAreValid() {
+        AuthRegisterRequest body = generateEmployerData();
+        // CHAME O MÉTODO 'register' ÚNICO DO AUTHCONTROLLER
+        ResponseEntity<MessageResponse> response = authController.register(body);
+        assertEquals("Cadastro realizado com sucesso!", response.getBody().getMessage()); // A mensagem do AuthController
+    }
+
+    @Test
+    public void shouldRegisterFreelancerSuccessfully_whenAllFieldsAreValid() {
+        AuthRegisterRequest body = generateFreelancerData();
+        // CHAME O MÉTODO 'register' ÚNICO DO AUTHCONTROLLER
+        ResponseEntity<MessageResponse> response = authController.register(body);
+        assertEquals("Cadastro realizado com sucesso!", response.getBody().getMessage()); // A mensagem do AuthController
+    }
+
+    @Test
+    public void shouldReturnBadRequest_whenEmailIsDuplicate() {
+        AuthRegisterRequest body = generateEmployerData();
+        authController.register(body); // Chamada para registrar o primeiro
+
+        AuthRegisterRequest duplicateEmailData = AuthRegisterRequest.builder()
+                .cpf(faker.number().digits(11))
+                .name(faker.name().fullName())
+                .username(faker.name().username())
+                .email(body.getEmail())
+                .password("Valid1234")
+                .role("EMPLOYER")
+                .companyName(faker.company().name())
+                .aboutMe(faker.lorem().sentence())
+                .experience(faker.lorem().sentence())
+                .build();
+
+        // CHAME O MÉTODO 'register' ÚNICO DO AUTHCONTROLLER
+        ResponseEntity<MessageResponse> response = authController.register(duplicateEmailData);
+        // A mensagem de erro agora virá do 'BadRequestException' que o AuthService lança
+        // e será capturada pelo @ControllerAdvice ou manipulada pelo Controller.
+        // A mensagem do erro que você tinha antes era "E-mail já está em uso.".
+        // O ideal é que o MessageResponse ou o corpo da resposta do erro contenha a mensagem exata.
+        // Se o controller estiver retornando ResponseEntity.badRequest().body(new MessageResponse("..."))
+        assertTrue(response.getBody().getMessage().contains("Email já em uso."));
+    }
+
+    @Test
+    public void shouldReturnBadRequest_whenCpfIsDuplicate() {
+        AuthRegisterRequest body = generateFreelancerData();
+        authController.register(body);
+
+        AuthRegisterRequest duplicateCpfData = AuthRegisterRequest.builder()
+                .cpf(body.getCpf())
+                .name(faker.name().fullName())
+                .username(faker.name().username())
+                .email(faker.internet().emailAddress())
+                .password("Valid1234")
+                .role("FREELANCER")
+                .portfolioLink(faker.internet().url())
+                .aboutMe(faker.lorem().sentence())
+                .experience(faker.lorem().sentence())
+                .build();
+
+        ResponseEntity<MessageResponse> response = authController.register(duplicateCpfData);
+        assertTrue(response.getBody().getMessage().contains("CPF já cadastrado."));
+    }
+
+    @Test
+    public void shouldReturnBadRequest_whenRoleIsInvalid() {
+        AuthRegisterRequest body = AuthRegisterRequest.builder()
+                .cpf(faker.number().digits(11))
+                .name(faker.name().fullName())
+                .username(faker.name().username())
+                .email(faker.internet().emailAddress())
+                .password("Valid1234")
+                .role("INVALID")
+                .aboutMe(faker.lorem().sentence())
+                .experience(faker.lorem().sentence())
+                .build();
+        ResponseEntity<MessageResponse> response = authController.register(body);
+        // Sua validação de role inválido deve retornar uma mensagem que contenha "Role inválido"
+        assertTrue(response.getBody().getMessage().contains("Role inválido"));
+    }
+
+    @Test
+    public void shouldReturnBadRequest_whenUsernameIsDuplicate() {
+        AuthRegisterRequest body = generateEmployerData();
+        authController.register(body);
+
+        AuthRegisterRequest duplicateUsernameData = AuthRegisterRequest.builder()
+                .cpf(faker.number().digits(11))
+                .name(faker.name().fullName())
+                .username(body.getUsername())
+                .email(faker.internet().emailAddress())
+                .password("Valid1234")
+                .role("EMPLOYER")
+                .companyName(faker.company().name())
+                .aboutMe(faker.lorem().sentence())
+                .experience(faker.lorem().sentence())
+                .build();
+
+        ResponseEntity<MessageResponse> response = authController.register(duplicateUsernameData);
+        assertTrue(response.getBody().getMessage().contains("Username já em uso."));
+    }
+}

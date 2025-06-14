@@ -1,0 +1,130 @@
+.project-edit-container {
+    max-width: 90%;
+    width: 600px;
+    margin: 10px auto;
+    padding: 10px;
+    text-align: center;
+}
+
+.back-link {
+    display: block;
+    text-align: left;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    margin-bottom: 20px;
+    margin-right: 500px; /* Garante que fique alinhado à esquerda do container */
+}
+/* Para telas menores, centraliza e reduz margens */
+@media (max-width: 768px) {
+    .back-link {
+        text-align: center;
+        margin-right: 0;
+    }
+}
+
+
+.edit-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 40px;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-weight: bold;
+    text-align: left;
+    display: block;
+}
+
+.input-field, .textarea-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bbb9b9;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.textarea-field {
+    height: 100px;
+    resize: none;
+}
+
+.edit-button {
+        background-color: #007bff;
+        color: white;
+        padding: 14px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 18px;
+        width: 100%;
+        max-width: 250px; /* Reduzindo a largura */
+        margin: 20px auto;
+        display: block;
+    font-family: 'Poppins', sans-serif; 
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+}
+
+/* Melhorando a responsividade em telas pequenas */
+@media (max-width: 480px) {
+    .project-edit-container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .edit-title {
+        font-size: 20px;
+    }
+
+    .input-field, .textarea-field {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .edit-button {
+        font-size: 16px;
+        padding: 12px;
+        
+       
+    }
+}
+
+.input-field,
+.textarea-field,
+select.input-field {
+    width: 100%;
+    padding: 10px;
+    height: 48px;
+    border: 1px solid #bbb9b9;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+
+.textarea-field {
+    height: 100px;
+    resize: none;
+}
+
+
+select.input-field {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+input[type="date"] {
+    font-size: 14px; /* ou o tamanho que preferir */
+}
