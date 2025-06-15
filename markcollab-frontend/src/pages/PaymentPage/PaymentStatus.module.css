@@ -1,0 +1,89 @@
+/* src/pages/pagamento/PaymentStatus.module.css */
+
+.pageWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px); /* Ajuste com base na altura do seu header/footer */
+    background-color: #f0f2f5;
+    padding: 20px;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+}
+
+.processingState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 0;
+    color: #007bff; /* Azul padrão */
+}
+
+.spinIcon {
+    font-size: 3em;
+    animation: spin 1.5s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.statusDisplay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 0;
+}
+
+.icon {
+    font-size: 4em;
+    margin-bottom: 20px;
+}
+
+.success .icon {
+    color: #28a745; /* Verde para sucesso */
+}
+
+.error .icon {
+    color: #dc3545; /* Vermelho para erro */
+}
+
+.message {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: 600;
+}
+
+.statusDisplay p {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.btnBackToProjects {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btnBackToProjects:hover {
+    background-color: #0056b3;
+}

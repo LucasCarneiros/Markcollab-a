@@ -23,6 +23,9 @@ import MyProjectsFreelancer from '../pages/MyProjectsFreelancer/MyProjectsFreela
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import FreelancerProfile from '../pages/FreelancerProfile/FreelancerProfile'; // <--- Perfil Público
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage'; 
+import PaymentSuccess from '../pages/PaymentPage/PaymentSuccess'; // <--- Importe
+import PaymentPending from '../pages/PaymentPage/PaymentPending'; // <--- Importe
+import PaymentFailure from '../pages/PaymentPage/PaymentFailure'; // <--- Importe
 
 const AppRoutes = () => {
   return (
@@ -63,6 +66,11 @@ const AppRoutes = () => {
       
       {/* --- Rota de fallback para páginas não encontradas --- */}
       <Route path="*" element={<NotFoundPage />} />
+
+       {/* Rotas de Status de Pagamento (geralmente acessíveis publicamente após redirecionamento do MP) */}
+        <Route path="/pagamento/sucesso" element={<PaymentSuccess />} />
+        <Route path="/pagamento/pendente" element={<PaymentPending />} />
+        <Route path="/pagamento/falha" element={<PaymentFailure />} />
     </Routes>
   );
 };

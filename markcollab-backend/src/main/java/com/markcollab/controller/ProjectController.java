@@ -186,15 +186,19 @@ public class ProjectController {
             Project project = projectService.findProjectById(projectId);
             Employer employer = projectService.findEmployerByCpf(employerCpf);
 
-            // VALIDAÇÕES IMPORTANTES:
+            // VALIDAÇÕES PARA INICIAR O PAGAMENTO:
             // 1. Verifica se o empregador que está tentando pagar é realmente o dono do projeto.
             if (project.getProjectEmployer() == null || !project.getProjectEmployer().getCpf().equals(employerCpf)) {
                 return ResponseEntity.status(403).body("Ação não autorizada: Apenas o empregador do projeto pode iniciar o pagamento.");
             }
-            // 2. Verifica se o projeto está em um estado que permita pagamento (ex: 'Em andamento' e com freelancer contratado).
-            // Adapte estas condições aos seus status de projeto.
-            if (!"Em andamento".equals(project.getStatus()) || project.getHiredFreelancer() == null) {
-                return ResponseEntity.badRequest().body("O projeto não está em um estado que permita pagamento ou não possui um freelancer contratado.");
+
+            // 2. Verifica se o projeto está em um status que permita INICIAR o pagamento.
+            // Para o seu fluxo, o pagamento é o passo ENTRE aceitar a proposta e de fato "contratar" no DB.
+            // O projeto deve estar 'Aberto' ou talvez 'Aguardando Pagamento'.
+            // Não deve estar já 'Concluído' ou 'Cancelado'.
+            if (project.getStatus() == null ||
+                    (!project.getStatus().equals("Aberto") && !project.getStatus().equals("Em andamento"))) { // Inclua 'Em andamento' se for o caso
+                return ResponseEntity.badRequest().body("O projeto não está no status 'Aberto' (ou 'Em andamento') para iniciar o pagamento.");
             }
 
             // Se as validações passarem, crie a preferência de pagamento no Mercado Pago
